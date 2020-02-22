@@ -1,0 +1,57 @@
+{
+    "name": "roaresearch/yii2-gii",
+    "description": "Yii 2 Library to create RMDB models and migrations",
+    "keywords": [
+        "yii2",
+        "migration",
+        "migrate",
+        "rmdb",
+        "relational model database"
+    ],
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "yiisoft/yii2": "~2.0.27",
+        "yiisoft/yii2-gii": "~2.0.0"
+    },
+    "require-dev": {
+        "codeception/base": "^3.1.0",
+        "codece,ption/verify": "~1.2.0",
+        "phpunit/php-code-coverage": "~5.0.0",
+        "roaresearch/yii2-migrate": "~2.0.0",
+        "squizlabs/php_codesniffer": "~3.5.0",
+        "yiisoft/yii2-debug": "~2.1.0"
+    },
+    "scripts": {
+        "deploy-tests": [
+            "@composer update --prefer-stable",
+            "chmod +x git-hooks/pre-commit.sh",
+            "ln -sfr git-hooks/pre-commit.sh .git/hooks/pre-commit"
+        ],
+        "sniff-php-file": [
+            "@php -l",
+            "vendor/bin/phpcs"
+        ],
+        "run-tests": "vendor/bin/codecept run --steps",
+        "run-coverage": "@composer run-tests -- --coverage --coverage-xml"
+    },
+    "scripts-descriptions": {
+        "deploy-tests": "Deploy the testing application",
+        "sniff-php-file": "Lint and sniff a php file",
+        "run-tests": "shortcut for `codecept run --steps`",
+        "run-coverage": "shortcut for `run-tests -- --coverage --coverage-xml"
+    },
+    "autoload": {
+        "psr-4": {
+            "roaresearch\\yii2\\gii\\": "src/"
+        }
+    }
+}
